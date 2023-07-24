@@ -1,4 +1,4 @@
-package main
+package ring
 
 import "sync"
 
@@ -6,6 +6,13 @@ type Ring struct {
 	next, prev *Ring
 	Value      int
 	RW         sync.RWMutex
+}
+
+type RingInterface interface {
+	Next() *Ring
+	Len() int
+	Get() []int
+	init() *Ring
 }
 
 func (r *Ring) init() *Ring {

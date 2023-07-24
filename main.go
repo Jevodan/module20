@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"module20/ring"
 	"os"
 	"strconv"
 	"strings"
@@ -86,7 +87,7 @@ func main() {
 
 	//Стадия буферизации данных
 	filterThree := func(channel chan int, done chan int) (filterChannel chan int) {
-		r := NewRing(BUFFER_SIZE)
+		r := ring.NewRing(BUFFER_SIZE)
 		filterChannel = make(chan int)
 		go func() {
 			for {
