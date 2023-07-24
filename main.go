@@ -36,7 +36,7 @@ source - источник данных и входной канал первой
 func (k *konveer) start(source chan int) chan int {
 	var c chan int = source
 	for _, v := range k.stage {
-		c = v(c, k.done)
+		c = v(c, k.done) // Вызов внутренних функций filterOne filterSecond filterThree
 	}
 	return c
 }

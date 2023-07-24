@@ -57,12 +57,14 @@ func (r *Ring) Len() int {
 func (r *Ring) Get() []int {
 	data := make([]int, 0)
 	if r != nil {
+		r.RW.RLock()
 		for p := r.Next(); p != r; p = p.next {
 			if p != nil {
 				data = append(data, p.Value)
 				p.Value = 0
 			}
 		}
+		r.RW.RUnlock()
 	}
 	return data
 }
