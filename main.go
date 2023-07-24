@@ -93,9 +93,7 @@ func main() {
 			for {
 				select {
 				case v := <-channel:
-					r.RW.Lock()
-					r.Value = v
-					r.RW.Unlock()
+					r.SetValue(v)
 					r = r.Next()
 				case <-done:
 					fmt.Println("Конвеер 3 закрыт")

@@ -13,6 +13,7 @@ type RingInterface interface {
 	Len() int
 	Get() []int
 	init() *Ring
+	SetValue()
 }
 
 func (r *Ring) init() *Ring {
@@ -64,4 +65,10 @@ func (r *Ring) Get() []int {
 		}
 	}
 	return data
+}
+
+func (r *Ring) SetValue(val int) {
+	r.RW.Lock()
+	r.Value = val
+	r.RW.Unlock()
 }
