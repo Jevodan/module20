@@ -108,9 +108,7 @@ func main() {
 			for {
 				select {
 				case <-time.After(INTERVAL):
-					r.RW.RLock()
 					arrayInt := r.Get()
-					r.RW.RUnlock()
 					fmt.Print("Принятая продукция на третью стадию: ")
 					for _, v := range arrayInt {
 						if v != 0 {
